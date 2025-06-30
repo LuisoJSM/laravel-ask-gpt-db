@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\DatabaseAssistant;
 use Illuminate\Support\ServiceProvider;
+
 
 class DatabaseAssistantServiceProvider extends ServiceProvider
 {
@@ -11,8 +13,14 @@ class DatabaseAssistantServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(DatabaseAssistant::class, function ($app) {
+            return new DatabaseAssistant();
+        });
     }
+
+
+
+
 
     /**
      * Bootstrap services.
